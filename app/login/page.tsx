@@ -19,7 +19,7 @@ export default function Login() {
 
     const handleSubmit = () => {
         alert("입력완료")
-        const url = `${SERVER}/login`
+        const url = `${SERVER}/api/login`
         const data = { username, password }
         const config = {
             headers: {
