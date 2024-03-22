@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from "react"
 import axios from 'axios';
+import { useState } from "react"
 import Link from "next/link";
 
 const SERVER = 'http://localhost:8080'
@@ -34,7 +34,8 @@ export default function Home() {
     <h3>이름입력하세요</h3>
     <input type="text" onChange={handleChange} /> <br />
     <button onClick={handleClick}>완료</button><br /><br />
-    <Link href={"/login"} >로그인</Link>
+    <Link href={"/login"} >로그인</Link><br />
+    <Link href={"/join"} >회원가입</Link>
   </>)
 
 }
