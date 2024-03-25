@@ -30,7 +30,10 @@ export default function Login() {
             }
         }
         axios.post(url, data, config)
-            .then(res => { alert(JSON.stringify(res.data)) })
+            .then(res => {
+                const message = res.data.message
+                alert((message))
+            })
     }
     return (<>
         <h2>로그인 하세요</h2>
