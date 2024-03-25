@@ -1,6 +1,8 @@
 'use client'
 
 import axios from "axios"
+import { useRouter } from "next/navigation"
+import { stringify } from "querystring"
 import { useState } from "react"
 
 const SERVER = 'http://localhost:8080'
@@ -17,6 +19,7 @@ export default function Login() {
         setPassword(e.target.value)
     }
 
+    const router = useRouter();
     const handleSubmit = () => {
         alert("입력완료")
         const url = `${SERVER}/api/login`
@@ -30,7 +33,12 @@ export default function Login() {
             }
         }
         axios.post(url, data, config)
-            .then(res => { alert(JSON.stringify(res.data)) })
+            .then(res => {  
+                const messege = res.data.로그인성공여부
+                alert(messege)
+                // if(messege == 'SUCCESS'){
+                //     router.push("/mypage")
+                })
     }
     return (<>
         <h2>로그인 하세요</h2>
