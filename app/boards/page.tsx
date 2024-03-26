@@ -9,7 +9,7 @@ const SERVER = 'http://localhost:8080'
 export default function Login() {
 
     return (<>
-        <h2>마이페이지</h2>
+        <h2>보드</h2>
      
     </>)
 }

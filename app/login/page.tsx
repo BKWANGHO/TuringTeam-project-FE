@@ -6,6 +6,8 @@ import { stringify } from "querystring"
 import { useState } from "react"
 
 const SERVER = 'http://localhost:8080'
+const router = useRouter();
+
 export default function Login() {
 
     const [username, setUsername] = useState('')
@@ -19,9 +21,8 @@ export default function Login() {
         setPassword(e.target.value)
     }
 
-    const router = useRouter();
+
     const handleSubmit = () => {
-        alert("입력완료")
         const url = `${SERVER}/api/login`
         const data = { username, password }
         const config = {
@@ -36,10 +37,18 @@ export default function Login() {
             .then(res => {  
                 const messege = res.data.로그인성공여부
                 alert(messege)
-                // if(messege == 'SUCCESS'){
-                //     router.push("/mypage")
-                })
-    }
+                if(messege === 'SUCCESS'){
+                    router.push("/articles/new-article")
+                 }else if (messege === 'FAIL'){
+
+                 }else if (messege === 'WRONG.PASSWORD'){
+
+                 }else{
+
+                 }
+                }
+                
+                )}
     return (<>
         <h2>로그인 하세요</h2>
         <h3>아이디를 입력하세요</h3>
