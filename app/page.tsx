@@ -36,7 +36,10 @@ export default function Home() {
     <button onClick={handleClick}>완료</button><br /><br />
     <Link href={"/login"} >로그인</Link><br />
 
-    <Link href={"/join"}>회원가입</Link>
+    <Link href={"/join"}>회원가입</Link><br />
+    
+    <Link href={"/article/newArticle"}>newArticle</Link><br />  
+    <Link href={"/companies"}>companies</Link><br />
   </>)
 
 }

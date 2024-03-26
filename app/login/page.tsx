@@ -1,6 +1,7 @@
 'use client'
 
 import axios from "axios"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 const SERVER = 'http://localhost:8080'
@@ -30,8 +31,15 @@ export default function Login() {
             }
         }
         axios.post(url, data, config)
-            .then(res => { alert(JSON.stringify(res.data)) })
+            .then(res => {
+                const Messenge=res.data.로그인성공여부
+                alert((Messenge))
+                router.push("/article/newArticle")
+            })
     }
+
+    const router = useRouter();
+
     return (<>
         <h2>로그인 하세요</h2>
         <h3>아이디를 입력하세요</h3>
