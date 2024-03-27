@@ -6,7 +6,6 @@ import { stringify } from "querystring"
 import { useState } from "react"
 
 const SERVER = 'http://localhost:8080'
-const router = useRouter();
 
 export default function Login() {
 
@@ -21,6 +20,7 @@ export default function Login() {
         setPassword(e.target.value)
     }
 
+    const router = useRouter();
 
     const handleSubmit = () => {
         const url = `${SERVER}/api/login`
@@ -35,10 +35,10 @@ export default function Login() {
         }
         axios.post(url, data, config)
             .then(res => {  
-                const messege = res.data.로그인성공여부
+                const messege = res.data.messege
                 alert(messege)
                 if(messege === 'SUCCESS'){
-                    router.push("/articles/new-article")
+                    router.push("/articles")
                  }else if (messege === 'FAIL'){
 
                  }else if (messege === 'WRONG.PASSWORD'){

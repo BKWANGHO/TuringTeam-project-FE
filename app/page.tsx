@@ -30,12 +30,16 @@ export default function Home() {
       })
   }
 
-  return (<>
-    <h3>이름입력하세요</h3>
-    <input type="text" onChange={handleChange} /> <br />
-    <button onClick={handleClick}>완료</button><br /><br />
+  return (<div className="text-center" >
+    <h3 >Welcome react!!</h3><br />
+    <h3 className='text-red-500'>이름입력하세요</h3>
+    <input className=" rounded-lg  flex-1 appearance-none border
+     border-black w-500 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2
+      focus:ring-purple-600 focus:border-transparent" type="text" onChange={handleChange} />
+    <button onClick={handleClick}>완료</button><br />
     <Link href={"/login"} >로그인</Link><br />
-    <Link href={"/join"}>회원가입</Link>
-  </>)
+    <Link href={"/join"}>회원가입</Link><br />
+    <Link href={"/mui-demo"}>mui-demo</Link>
+  </div>)
 
 }
