@@ -5,7 +5,6 @@ import axios from "axios"
 import { Main } from "next/document"
 import { useRouter } from "next/navigation"
 import { stringify } from "querystring"
-import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from "react"
 
 
