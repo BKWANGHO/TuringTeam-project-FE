@@ -1,11 +1,13 @@
 'use client'
 
+import { API } from "@/app/atoms/enums/API"
+import { PG } from "@/app/atoms/enums/PG"
+import AxiosConfig from "@/app/organisms/configs/axios-config"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { stringify } from "querystring"
 import { useState } from "react"
 
-const SERVER = 'http://localhost:8080'
 
 export default function Login() {
 
@@ -23,22 +25,12 @@ export default function Login() {
     const router = useRouter();
 
     const handleSubmit = () => {
-        const url = `${SERVER}/api/login`
-        const data = { username, password }
-        const config = {
-            headers: {
-                "Cache-Control": "no-cache",
-                "Content-Type": "application/json",
-                Authorization: `Bearer blah ~`,
-                "Access-Control-Allow-Origin": "*",
-            }
-        }
-        axios.post(url, data, config)
+        axios.post(`${API.SERVER}/login`, { username, password },AxiosConfig())
             .then(res => {  
                 const messege = res.data.messege
                 alert(messege)
                 if(messege === 'SUCCESS'){
-                    router.push("/articles")
+                    router.push(`${PG.BOARD}/boards`)
                  }else if (messege === 'FAIL'){
 
                  }else if (messege === 'WRONG.PASSWORD'){

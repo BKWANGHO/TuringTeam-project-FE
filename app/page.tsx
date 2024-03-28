@@ -3,8 +3,11 @@
 import { useState } from "react"
 import axios from 'axios';
 import Link from "next/link";
+import { PG } from "./atoms/enums/PG";
+import AxiosConfig from "./organisms/configs/axios-config";
+import { API } from "./atoms/enums/API";
 
-const SERVER = 'http://localhost:8080'
+
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -14,17 +17,8 @@ export default function Home() {
 
   const handleClick = () => {
     alert('입력완료' + name)
-    const url = `${SERVER}/name`
-    const data = { name }
-    const config = {
-      headers: {
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-        Authorization: `Bearer blah ~`,
-        "Access-Control-Allow-Origin": "*",
-      }
-    }
-    axios.post(url, data, config)
+  
+    axios.post(`${API.SERVER}/login`, { name }, AxiosConfig())
       .then(res => {
         alert("리스펀스가 가져온이름 : " + JSON.stringify(res.data))
       })
@@ -37,9 +31,12 @@ export default function Home() {
      border-black w-500 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2
       focus:ring-purple-600 focus:border-transparent" type="text" onChange={handleChange} />
     <button onClick={handleClick}>완료</button><br />
-    <Link href={"/login"} >로그인</Link><br />
-    <Link href={"/join"}>회원가입</Link><br />
-    <Link href={"/mui-demo"}>mui-demo</Link>
+    <Link href={ `${PG.USER}/login`} >로그인</Link><br />
+    <Link href={`${PG.USER}/join`}>회원가입</Link><br />
+    <Link href={`${PG.DEMO}/mui-demo`}>mui-demo</Link><br />
+    <Link href={`${PG.DEMO}/companies`}>companies</Link><br />  
+    <Link href={`${PG.DEMO}/counter`}>conuter</Link><br />
+    <Link href={`${PG.DEMO}/counter/container`}>redux-demo</Link>
   </div>)
 
 }

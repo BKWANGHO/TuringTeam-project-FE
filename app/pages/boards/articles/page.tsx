@@ -3,13 +3,16 @@
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { stringify } from "querystring"
-import { useState } from "react"
+import React from "react"
 
-const SERVER = 'http://localhost:8080'
-export default function Login() {
+
+export default function NewArticle() {
+
 
     return (<>
-        <h2>보드</h2>
-     
+        <h2>New article</h2>
+
+
+
     </>)
 }
