@@ -6,9 +6,8 @@ import { useRouter } from "next/navigation"
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from "react"
 import {Box, Button, Input} from '@mui/material';
-
-
-const SERVER = 'http://localhost:8080'
+import AxiosConfig from "@/app/organisms/configs/axios-config";
+import { API } from "@/app/atoms/enums/API";
 
 interface IArticle {
     id: number,
@@ -18,23 +17,12 @@ interface IArticle {
     registerDate: string
 }
 
-
 export default function Articles() {
 
     const [articles, setArticles] = useState([])
 
-    const url = `${SERVER}/api/articles`
-    const config = {
-        headers: {
-            "Cache-Control": "no-cache",
-            "Content-Type": "application/json",
-            Authorization: `Bearer blah ~`,
-            "Access-Control-Allow-Origin": "*",
-        }
-    }
-
     useEffect(() => {
-        axios.get(url, config)
+        axios.get(`${API.SERVER}/articles`, AxiosConfig())
             .then(res => {
                 const messege = res.data.messege
                 if (messege === 'SUCCESS') {
@@ -52,24 +40,28 @@ export default function Articles() {
                 }
             })
     }, [])
+    
     return (<>
-        <h3>게시글 목록</h3>
-        <Box sx={{ height: 400, width: '100%' }}>
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
-                pageSizeOptions={[5]}
-                checkboxSelection
-                disableRowSelectionOnClick
-            />
-        </Box>
-    </>
-    )
+        <h2>개인페이지 Article</h2>
+        <table border={1}>
+            <thead>
+                <tr>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>writer</th>
+                    <th>registerDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {articles.map((props: IArticle) => (
+                    <tr key={props.id}>
+                        <td>{props.title}</td>
+                        <td>{props.content}</td>
+                        <td>{props.writer}</td>
+                        <td>{props.registerDate}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </>)
 }

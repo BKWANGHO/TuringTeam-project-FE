@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { stringify } from "querystring"
 import { useState } from "react"
 
-const SERVER = 'http://localhost:8080'
+
 export default function NewArticle() {
 
 
