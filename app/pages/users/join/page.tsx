@@ -5,6 +5,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation"
 import AxiosConfig from "@/app/organisms/configs/axios-config"
 import { API } from "@/app/atoms/enums/API"
+import { PG } from "@/app/atoms/enums/PG"
 
 export default function Join() {
 
@@ -49,7 +50,7 @@ export default function Join() {
     axios.post(`${API.SERVER}/join`, 
     { username, password,name,phone,addressId,job,height,weight},AxiosConfig())
         .then(res => { alert(JSON.stringify(res.data)) 
-        router.push("/login")
+        router.push(`${PG.USER}/login`)
         })
 }
 

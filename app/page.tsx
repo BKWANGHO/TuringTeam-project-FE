@@ -34,7 +34,9 @@ export default function Home() {
     <Link href={ `${PG.USER}/login`} >로그인</Link><br />
     <Link href={`${PG.USER}/join`}>회원가입</Link><br />
     <Link href={`${PG.DEMO}/mui-demo`}>mui-demo</Link><br />
-    <Link href={`${PG.DEMO}/companies`}>companies</Link>
+    <Link href={`${PG.DEMO}/companies`}>companies</Link><br />  
+    <Link href={`${PG.DEMO}/counter`}>conuter</Link><br />
+    <Link href={`${PG.DEMO}/counter/container`}>redux-demo</Link>
   </div>)
 
 }

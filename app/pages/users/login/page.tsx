@@ -1,6 +1,7 @@
 'use client'
 
 import { API } from "@/app/atoms/enums/API"
+import { PG } from "@/app/atoms/enums/PG"
 import AxiosConfig from "@/app/organisms/configs/axios-config"
 import axios from "axios"
 import { useRouter } from "next/navigation"
@@ -29,7 +30,7 @@ export default function Login() {
                 const messege = res.data.messege
                 alert(messege)
                 if(messege === 'SUCCESS'){
-                    router.push("/articles")
+                    router.push(`${PG.BOARD}/boards`)
                  }else if (messege === 'FAIL'){
 
                  }else if (messege === 'WRONG.PASSWORD'){
