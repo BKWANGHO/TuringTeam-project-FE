@@ -37,9 +37,9 @@ export default function Home() {
      border-black w-500 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2
       focus:ring-purple-600 focus:border-transparent" type="text" onChange={handleChange} />
     <button onClick={handleClick}>완료</button><br />
-    <Link href={"/login"} >로그인</Link><br />
-    <Link href={"/join"}>회원가입</Link><br />
-    <Link href={"/mui-demo"}>mui-demo</Link>
+    <Link href={"/pages/users/login"} >로그인</Link><br />
+    <Link href={"/pages/users/join"}>회원가입</Link><br />
+    <Link href={"/pages/demos/mui-demo"}>mui-demo</Link>
   </div>)
 
 }

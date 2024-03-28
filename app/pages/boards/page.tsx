@@ -2,11 +2,10 @@
 'use client'
 
 import axios from "axios"
-import { Main } from "next/document"
 import { useRouter } from "next/navigation"
-import { stringify } from "querystring"
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from "react"
+import {Box, Button, Input} from '@mui/material';
 
 
 const SERVER = 'http://localhost:8080'
@@ -53,31 +52,24 @@ export default function Articles() {
                 }
             })
     }, [])
-    return (
-        <>
-            <h3>Articles</h3>
-
-            <table >
-                <thead>
-                    <tr>
-                        <th>제목</th>
-                        <th>내용</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {articles.map((props: IArticle) => (
-                        <tr key={props.id}>
-                            <td>{props.title}</td>
-                            <td>{props.content}</td>
-                            <td>{props.writer}</td>
-                            <td>{props.registerDate}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </>
-
+    return (<>
+        <h3>게시글 목록</h3>
+        <Box sx={{ height: 400, width: '100%' }}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                initialState={{
+                    pagination: {
+                        paginationModel: {
+                            pageSize: 5,
+                        },
+                    },
+                }}
+                pageSizeOptions={[5]}
+                checkboxSelection
+                disableRowSelectionOnClick
+            />
+        </Box>
+    </>
     )
 }

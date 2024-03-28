@@ -1,12 +1,6 @@
 
 'use client'
 
-import axios from "axios"
-import { Main } from "next/document"
-import { useRouter } from "next/navigation"
-import { stringify } from "querystring"
-import { useState } from "react"
-
 interface ICompany{
     company : string,
     contact: string,
@@ -33,7 +27,6 @@ export default function Companies() {
     ]
     
     const companyMap = Companies.map((v,i) => (<Company key={i} {...v} />))    
-    
 
     return (
         <>
