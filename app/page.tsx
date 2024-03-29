@@ -3,9 +3,9 @@
 import { useState } from "react"
 import axios from 'axios';
 import Link from "next/link";
-import { PG } from "./atoms/enums/PG";
-import AxiosConfig from "./organisms/configs/axios-config";
-import { API } from "./atoms/enums/API";
+import { PG } from "../redux/common/enums/PG";
+import AxiosConfig from "../redux/common/configs/axios-config";
+import { API } from "../redux/common/enums/API";
 
 
 
@@ -34,9 +34,10 @@ export default function Home() {
     <Link href={ `${PG.USER}/login`} >로그인</Link><br />
     <Link href={`${PG.USER}/join`}>회원가입</Link><br />
     <Link href={`${PG.DEMO}/mui-demo`}>mui-demo</Link><br />
+    <Link href={`${PG.BOARD}/articles/writer`}>article</Link><br />
     <Link href={`${PG.DEMO}/companies`}>companies</Link><br />  
     <Link href={`${PG.DEMO}/counter`}>conuter</Link><br />
-    <Link href={`${PG.DEMO}/counter/container`}>redux-demo</Link>
+    <Link href={`${PG.DEMO}/redux-counter`}>Redux counter-demo</Link>
   </div>)
 
 }

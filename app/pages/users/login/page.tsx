@@ -1,15 +1,15 @@
 'use client'
 
-import { API } from "@/app/atoms/enums/API"
-import { PG } from "@/app/atoms/enums/PG"
-import AxiosConfig from "@/app/organisms/configs/axios-config"
+import { API } from "@/redux/common/enums/API"
+import { PG } from "@/redux/common/enums/PG"
+import AxiosConfig from "@/redux/common/configs/axios-config"
 import axios from "axios"
 import { useRouter } from "next/navigation"
-import { stringify } from "querystring"
 import { useState } from "react"
+import { NextPage } from "next"
 
 
-export default function Login() {
+ const LoginPage :NextPage =() =>{
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -30,7 +30,7 @@ export default function Login() {
                 const messege = res.data.messege
                 alert(messege)
                 if(messege === 'SUCCESS'){
-                    router.push(`${PG.BOARD}/boards`)
+                    router.push(`${PG.BOARD}/articles/writer`)
                  }else if (messege === 'FAIL'){
 
                  }else if (messege === 'WRONG.PASSWORD'){
@@ -51,3 +51,4 @@ export default function Login() {
 
     </>)
 }
+export default LoginPage

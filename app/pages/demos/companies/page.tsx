@@ -1,12 +1,13 @@
 
 'use client'
 
-import CompanyColumns from "@/app/organisms/columns/company-columns"
-import CompanyRows from "@/app/organisms/rows/company-rows"
+import CompanyColumns from "@/app/components/columns/company-columns"
+import CompanyRows from "@/app/components/rows/company-rows"
+import { NextPage } from "next"
 
 
 
-export default function Companies() {
+ const CompaniesPage : NextPage = ()=> {
     return (
         <>
             <h3>Company</h3>
@@ -27,3 +28,4 @@ export default function Companies() {
 
     )
 }
+export default CompaniesPage
