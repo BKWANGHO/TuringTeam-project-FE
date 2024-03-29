@@ -47,7 +47,7 @@ export default function Join() {
 
   const handleSubmit = () => {
    
-    axios.post(`${API.SERVER}/join`, 
+    axios.post(`${API.SERVER}/users`, 
     { username, password,name,phone,addressId,job,height,weight},AxiosConfig())
         .then(res => { alert(JSON.stringify(res.data)) 
         router.push(`${PG.USER}/login`)

@@ -30,7 +30,7 @@ export default function Login() {
                 const messege = res.data.messege
                 alert(messege)
                 if(messege === 'SUCCESS'){
-                    router.push(`${PG.BOARD}/boards`)
+                    router.push(`${PG.BOARD}`)
                  }else if (messege === 'FAIL'){
 
                  }else if (messege === 'WRONG.PASSWORD'){

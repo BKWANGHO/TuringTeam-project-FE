@@ -42,7 +42,7 @@ export default function Articles() {
     }, [])
     
     return (<>
-        <h2>개인페이지 Article</h2>
+        <h2>개인페이지 Board</h2>
         <table border={1}>
             <thead>
                 <tr>
