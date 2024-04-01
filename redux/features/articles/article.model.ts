@@ -4,5 +4,5 @@ export interface IArticle{
     content : string
     writer : number
     registerDate : string
-
+    array :[]
 }
