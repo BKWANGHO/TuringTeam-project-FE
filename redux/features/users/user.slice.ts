@@ -1,37 +1,45 @@
 "use client"; 
 
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchAllUsers } from "./user.service";
+import { initialState } from "./user.init";
 
-interface IUser{
-    id : number
-    username : string
-    password : string
-    name : string
-    phone : string
-    addressId : number
-    job : string
-    height : number
-    weight : number
+
+const status = {
+    pending : 'pending',
+    fulfilled : 'fulfilled',
+    rejected:'rejected'
 }
 
+const handlePending =(state :any)=> {
+ 
+}
+const handleFulfilled =(state :any, {payload}:any) => {
+ state.array = payload
+ console.log(state.array)
+}
 
-const initialState:IUser={
-    id : 0,
-    username : '',
-    password : '',
-    name : '',
-    phone : '',
-    addressId : 0,
-    job : '',
-    height : 0,
-    weight : 0
+const handleRejected =(state :any)=> {
+
 }
 
 export const userSlice = createSlice({
-    name : 'user',
+    name : 'users',
     initialState,
-    reducers:{}
+    reducers:{},
+    extraReducers : builder =>{
+        const {pending,rejected} = status;
+
+        builder
+        .addCase(fetchAllUsers.fulfilled,handleFulfilled)
+        
+    }
 })
+
+export const getAllUsers = (state:any)=>{
+    console.log(JSON.stringify(state.user.array.result))
+    return state.user.array.result;
+}
 
 export const{} = userSlice.actions
 

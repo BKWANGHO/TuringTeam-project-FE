@@ -33,6 +33,7 @@ export default function Home() {
     <button onClick={handleClick}>완료</button><br />
     <Link href={ `${PG.USER}/login`} >로그인</Link><br />
     <Link href={`${PG.USER}/join`}>회원가입</Link><br />
+    <Link href={`${PG.USER}/users`}>유저 목록</Link><br />
     <Link href={`${PG.DEMO}/mui-demo`}>mui-demo</Link><br />
     <Link href={`${PG.BOARD}/articles/writer`}>article</Link><br />
     <Link href={`${PG.DEMO}/companies`}>companies</Link><br />  
