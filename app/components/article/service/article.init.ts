@@ -1,4 +1,4 @@
-import { IArticle } from "./article.model";
+import { IArticle } from "../model/article";
 
 
 export const initialState:IArticle={

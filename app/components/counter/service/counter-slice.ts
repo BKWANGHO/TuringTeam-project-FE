@@ -1,7 +1,7 @@
 "use client"; 
 
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./counter.init";
+import { initialState } from "./counter-init";
 
 
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { API } from "@/redux/common/enums/API"
-import { PG } from "@/redux/common/enums/PG"
-import AxiosConfig from "@/redux/common/configs/axios-config"
+import { API } from "@/app/components/common/enums/API"
+import { PG } from "@/app/components/common/enums/PG"
+import AxiosConfig from "@/app/components/common/configs/axios-config"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useState } from "react"

@@ -1,4 +1,4 @@
-"use client"; 
+'use client'
 
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllUsers } from "./user.service";
@@ -15,8 +15,7 @@ const handlePending =(state :any)=> {
  
 }
 const handleFulfilled =(state :any, {payload}:any) => {
- state.array = payload
- console.log(state.array)
+ state.user = payload
 }
 
 const handleRejected =(state :any)=> {
@@ -37,8 +36,8 @@ export const userSlice = createSlice({
 })
 
 export const getAllUsers = (state:any)=>{
-    console.log(JSON.stringify(state.user.array.result))
-    return state.user.array.result;
+    // console.log(JSON.stringify(state.user.array))
+    return state.user.message;
 }
 
 export const{} = userSlice.actions

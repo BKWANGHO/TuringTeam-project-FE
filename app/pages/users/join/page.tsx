@@ -3,9 +3,9 @@
 import { useState } from "react"
 import axios from "axios"
 import { useRouter } from "next/navigation"
-import AxiosConfig from "@/redux/common/configs/axios-config"
-import { API } from "@/redux/common/enums/API"
-import { PG } from "@/redux/common/enums/PG"
+import AxiosConfig from "@/app/components/common/configs/axios-config"
+import { API } from "@/app/components/common/enums/API"
+import { PG } from "@/app/components/common/enums/PG"
 import { NextPage } from "next"
 
  const JoinPage : NextPage = ()=> {
@@ -49,7 +49,7 @@ import { NextPage } from "next"
   const handleSubmit = () => {
    
     axios.post(`${API.SERVER}/users`, 
-    { username, password,name,phone,addressId,job,height,weight},AxiosConfig())
+    { username, password,name,phone,job},AxiosConfig())
         .then(res => { alert(JSON.stringify(res.data)) 
         router.push(`${PG.USER}/login`)
         })
@@ -80,11 +80,11 @@ import { NextPage } from "next"
       <label htmlFor="job"><b>Job</b></label><br />
       <input type="text" placeholder="Enter job" name="job" onChange={handleJob} required /><br /><br />
 
-      <label htmlFor="height"><b>Height</b></label><br />
+      {/* <label htmlFor="height"><b>Height</b></label><br />
       <input type="text" placeholder="Enter height" name="height" onChange={handleHeight} required /><br /><br />
 
       <label htmlFor="weight"><b>Weight</b></label><br />
-      <input type="text" placeholder="Enter weight" name="weight" onChange={handleWeight} required /><br /><br />
+      <input type="text" placeholder="Enter weight" name="weight" onChange={handleWeight} required /><br /><br /> */}
 
       <label>
         <input type="checkbox" checked={true} name="remember" style={{ marginBottom: '15px' }} /> Remember me

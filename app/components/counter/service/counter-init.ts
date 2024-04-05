@@ -1,4 +1,4 @@
-import { ICounter } from "./counter.model";
+import { ICounter } from "../model/counter";
 
 export const initialState:ICounter = {
     value: 0,
