@@ -5,16 +5,17 @@ import { useRouter } from "next/navigation"
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from "react"
 import {Box, Button, Input} from '@mui/material';
-import AxiosConfig from "@/redux/common/configs/axios-config";
-import { API } from "@/redux/common/enums/API";
+import AxiosConfig from "@/app/components/common/configs/axios-config";
+import { API } from "@/app/components/common/enums/API";
 import { useSelector, useDispatch } from 'react-redux'
 import { NextPage } from "next";
-import { fetchAllArticles } from "@/redux/features/articles/article.service";
-import { getAllArticles } from "@/redux/features/articles/article.slice";
-import { IArticle } from "@/redux/features/articles/article.model";
+import { fetchAllArticles } from "@/app/components/article/service/article.service";
+import { getAllArticles } from "@/app/components/article/service/article.slice";
+import { IArticle } from "@/app/components/article/model/article";
+import Columns from "@/app/components/article/module/article-columns";
 
 
- const ArticlesPage : NextPage = ()=> {
+ const ArticlesPage : NextPage = ({data}:any)=> {
     const dispatch = useDispatch()
     const allArticles: [] = useSelector(getAllArticles)
 
@@ -35,26 +36,22 @@ import { IArticle } from "@/redux/features/articles/article.model";
     
     return (<>
         <h2>개인페이지 Board</h2>
-        <table border={1}>
-            <thead>
-                <tr>
-                    <th>title</th>
-                    <th>content</th>
-                    <th>writer</th>
-                    <th>registerDate</th>
-                </tr>
-            </thead>
-            <tbody>
-                {allArticles?.map((props: IArticle) => (
-                    <tr key={props.id}>
-                        <td>{props.title}</td>
-                        <td>{props.content}</td>
-                        <td>{props.writer}</td>
-                        <td>{props.registerDate}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <Box sx={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={data}
+        columns={Columns()}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
+      />
+    </Box>
     </>)
 }
 export default ArticlesPage;

@@ -1,8 +1,8 @@
 
 'use client'
 
-import CompanyColumns from "@/app/components/columns/company-columns"
-import CompanyRows from "@/app/components/rows/company-rows"
+import CompanyColumns from "@/app/components/company/company-columns"
+import CompanyRows from "@/app/components/company/company-rows"
 import { NextPage } from "next"
 
 
