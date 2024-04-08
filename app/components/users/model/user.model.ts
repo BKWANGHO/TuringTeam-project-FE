@@ -5,4 +5,5 @@ export interface IUser {
     password? : string,
     phone? : string ,
     job? : string ,
+     array :[]
 }

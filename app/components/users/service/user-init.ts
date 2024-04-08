@@ -7,4 +7,5 @@ export const initialState:IUser={
     password : '',
     phone : '' ,
     job : '' ,
+    array:[] 
 }

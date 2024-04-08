@@ -15,7 +15,7 @@ const handlePending =(state :any)=> {
  
 }
 const handleFulfilled =(state :any, {payload}:any) => {
- state.user = payload
+ state.array = payload
 }
 
 const handleRejected =(state :any)=> {
@@ -38,7 +38,7 @@ export const userSlice = createSlice({
 export const getAllUsers = (state:any)=>{
     // console.log(JSON.stringify(state.user.array))
     return state.user.array;
-}
+}   
 
 export const{} = userSlice.actions
 
