@@ -1,7 +1,7 @@
 'use client'
 
-import { fetchAllUsers } from "@/app/components/users/service/user.service";
-import { getAllUsers } from "@/app/components/users/service/user.slice";
+import { fetchAllUsers } from "@/app/components/users/service/user-service";
+import { getAllUsers } from "@/app/components/users/service/user-slice";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

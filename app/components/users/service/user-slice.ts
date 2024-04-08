@@ -1,8 +1,8 @@
 'use client'
 
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllUsers } from "./user.service";
-import { initialState } from "./user.init";
+import { fetchAllUsers } from "./user-service";
+import { initialState } from "./user-init";
 
 
 const status = {
@@ -37,7 +37,7 @@ export const userSlice = createSlice({
 
 export const getAllUsers = (state:any)=>{
     // console.log(JSON.stringify(state.user.array))
-    return state.user.message;
+    return state.user.array;
 }
 
 export const{} = userSlice.actions
