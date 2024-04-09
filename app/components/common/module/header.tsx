@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
 import { PG } from '@/app/components/common/enums/PG';
 
-const pages = ['회원가입', '로그인', '카운터', '게시글목록', '사용자목록'];
+const pages = ['회원가입', '로그인', '카운터', '게시판목록','게시글목록', '사용자목록'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -38,8 +38,9 @@ function Header() {
       case '회원가입': router.push(`${PG.USER}/join`); break;
       case '로그인': router.push(`${PG.USER}/login`); break;
       case '카운터': router.push(`${PG.DEMO}/counter`); break;
-      case '게시글목록': router.push(`${PG.BOARD}/articles/writer`); break;
-      case '사용자목록': router.push(`${PG.USER}`); break;
+      case '게시판목록': router.push(`${PG.BOARD}/list`); break;
+      case '게시글목록': router.push(`${PG.ARTICLE}/list`); break;
+      case '사용자목록': router.push(`${PG.USER}/list`); break;
     }
   };
 

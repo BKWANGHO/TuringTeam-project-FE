@@ -1,6 +1,6 @@
 'use client'
 
-import { fetchAllUsers } from "@/app/components/users/service/user-service";
+import { findAllUsers } from "@/app/components/users/service/user-service";
 import { getAllUsers } from "@/app/components/users/service/user-slice";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -28,19 +28,19 @@ const UsersPage : NextPage = ()=>{
   }
 
     useEffect(()=>{
-        dispatch(fetchAllUsers(1))
+        dispatch(findAllUsers(1))
     },[])
 
 
 return(<>
 <h1>사용자 목록</h1>
       <div style={{ height: 400, width: "100%" }}>
-      <DataGrid // 🔥 4
+      {allUsers && <DataGrid // 🔥 4
         rows={allUsers}
         columns={UsersColums()}
         pageSizeOptions={[5,10,20]} // 4-1
         checkboxSelection
-      />
+      />}
     </div>
 
 </>)

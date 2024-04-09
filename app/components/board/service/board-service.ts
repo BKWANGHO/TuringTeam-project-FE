@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { findAllArticlesAPI } from "./article.api";
+import { findAllboardsAPI } from "./board-api";
 
-export const findAllArticles : any = createAsyncThunk(
-    'articles/findAllArticles',
+export const fetchAllboards : any = createAsyncThunk(
+    'boards/findAllboards',
      async (page:number)=>{
-    console.log('fetchAllArticles page : ' + page)
-    const data:any = await findAllArticlesAPI(1);
+    console.log('fetchAllboards page : ' + page)
+    const data:any = await findAllboardsAPI(1);
 
     // const {messege,result}:any = data
     // console.log('----------api를 사용한경우-----------')

@@ -9,7 +9,7 @@ import AxiosConfig from "@/app/components/common/configs/axios-config";
 import { API } from "@/app/components/common/enums/API";
 import { useSelector, useDispatch } from 'react-redux'
 import { NextPage } from "next";
-import { fetchAllArticles } from "@/app/components/article/service/article.service";
+import { findAllArticles } from "@/app/components/article/service/article.service";
 import { getAllArticles } from "@/app/components/article/service/article.slice";
 import { IArticle } from "@/app/components/article/model/article";
 import Columns from "@/app/components/article/module/article-columns";
@@ -22,23 +22,31 @@ import Columns from "@/app/components/article/module/article-columns";
     if(allArticles !== undefined){
         console.log('allArticles is not undefined')
     
-        console.log('length is '+ allArticles.length)
-        for(let i=0; i< allArticles.length; i++){
-            console.log(JSON.stringify(allArticles[i]))
-        }
+        // console.log('length is '+ allArticles.length)
+        // for(let i=0; i< allArticles.length; i++){
+        //     console.log(JSON.stringify(allArticles[i]))
+        // }
     }else{
         console.log('allArticles is undefined')
     }
     
     useEffect(() => {
-        dispatch(fetchAllArticles(1))
+        dispatch(findAllArticles(10))
     }, [])
     
     return (<>
         <h2>개인페이지 Board</h2>
-        <Box sx={{ height: 400, width: '100%' }}>
+        <div style={{ height: 400, width: "100%" }}>
+      <DataGrid // 🔥 4
+        rows={allArticles}
+        columns={Columns()}
+        pageSizeOptions={[5,10,20]} // 4-1
+        checkboxSelection
+      />
+    </div>
+        {/* <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={data}
+        rows={allArticles}
         columns={Columns()}
         initialState={{
           pagination: {
@@ -51,7 +59,7 @@ import Columns from "@/app/components/article/module/article-columns";
         checkboxSelection
         disableRowSelectionOnClick
       />
-    </Box>
+    </Box> */}
     </>)
 }
 export default ArticlesPage;

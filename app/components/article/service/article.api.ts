@@ -1,11 +1,11 @@
 import { instance } from "@/app/components/common/configs/axios-config"
 
 
-export const fetchAllArticlesAPI = async (page:number)=>{
+export const findAllArticlesAPI = async (page:number)=>{
 
 try{
-    const response = await instance.get('/all-articles',{
-        params:{page,limit:10}
+    const response = await instance.get('/articles/list',{
+        params:{page,size:10,limit:10}
     })
 return response.data
 }catch(error){

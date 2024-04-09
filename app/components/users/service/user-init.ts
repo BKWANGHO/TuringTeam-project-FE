@@ -5,7 +5,10 @@ export const initialState:IUser={
     username : '',
     name : '',
     password : '',
+    addressId : 0,
     phone : '' ,
     job : '' ,
+    regDate:'',
+    modDate:'',
     array:[] 
 }

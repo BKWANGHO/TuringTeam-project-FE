@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchAllUsersAPI } from "./user-api";
+import { findAllUsersAPI } from "./user-api";
 
 
-export const fetchAllUsers:any = createAsyncThunk(
-    'users/fetctAllUsers',
+export const findAllUsers:any = createAsyncThunk(
+    'users/findAllUsers',
     async (page:number)=>{
-    const data : any =await fetchAllUsersAPI(10);
+    const data : any =await findAllUsersAPI(10);
 
     // console.log('----------api를 사용한경우-----------')
     // console.log('messege : ' + data)

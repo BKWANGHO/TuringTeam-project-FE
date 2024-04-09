@@ -2,10 +2,11 @@ import { Typography } from '@mui/material'
 import {GridRowId,GridColDef} from '@mui/x-data-grid'
 import { UserColumn } from '../model/user-column'
 import { rowSelectionStateInitializer } from '@mui/x-data-grid/internals'
+import { IUser } from '../model/user.model'
 
 
 interface CellType{
-    row : UserColumn 
+    row : IUser 
 }
 
 
