@@ -11,6 +11,4 @@ return response.data
 }catch(error){
 console.log(error)
 
-}
-
-}
+}}

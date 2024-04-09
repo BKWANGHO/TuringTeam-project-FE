@@ -9,57 +9,39 @@ import AxiosConfig from "@/app/components/common/configs/axios-config";
 import { API } from "@/app/components/common/enums/API";
 import { useSelector, useDispatch } from 'react-redux'
 import { NextPage } from "next";
-import { findAllArticles } from "@/app/components/article/service/article.service";
-import { getAllArticles } from "@/app/components/article/service/article.slice";
-import { IArticle } from "@/app/components/article/model/article";
-import Columns from "@/app/components/article/module/article-columns";
+import { Iboard } from "@/app/components/board/model/board";
+import Columns from "@/app/components/board/module/board-columns";
+import { getAllboards } from "@/app/components/board/service/board-slice";
+import { findAllboards } from "@/app/components/board/service/board-service";
+import { StyledDataGrid } from "@/app/components/common/style/board";
+import { ClassNames } from "@emotion/react";
 
 
- const ArticlesPage : NextPage = ({data}:any)=> {
+ const boardsPage : NextPage = ({data}:any)=> {
     const dispatch = useDispatch()
-    const allArticles: [] = useSelector(getAllArticles)
+    const allboards: [] = useSelector(getAllboards)
 
-    if(allArticles !== undefined){
-        console.log('allArticles is not undefined')
+    if(allboards !== undefined){
+        console.log('allboards is not undefined')
     
-        // console.log('length is '+ allArticles.length)
-        // for(let i=0; i< allArticles.length; i++){
-        //     console.log(JSON.stringify(allArticles[i]))
-        // }
     }else{
-        console.log('allArticles is undefined')
+        console.log('allboards is undefined')
     }
     
     useEffect(() => {
-        dispatch(findAllArticles(10))
+        dispatch(findAllboards(10))
     }, [])
     
     return (<>
-        <h2>개인페이지 Board</h2>
-        <div style={{ height: 400, width: "100%" }}>
-      <DataGrid // 🔥 4
-        rows={allArticles}
+        <h2>게시판목록 Board</h2>
+        <div style={{ height: "100%", width: "100%" }}>
+      {allboards&&<DataGrid // 🔥 4
+        rows={allboards}
         columns={Columns()}
         pageSizeOptions={[5,10,20]} // 4-1
         checkboxSelection
-      />
+      />}
     </div>
-        {/* <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={allArticles}
-        columns={Columns()}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box> */}
     </>)
 }
-export default ArticlesPage;
+export default boardsPage;

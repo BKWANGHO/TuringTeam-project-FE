@@ -1,8 +1,8 @@
-import { Typography } from '@mui/material'
+import { Link, Typography } from '@mui/material'
 import {GridRowId,GridColDef} from '@mui/x-data-grid'
-import { UserColumn } from '../model/user-column'
 import { rowSelectionStateInitializer } from '@mui/x-data-grid/internals'
 import { IUser } from '../model/user.model'
+import { PG } from '../../common/enums/PG'
 
 
 interface CellType{
@@ -29,7 +29,8 @@ export default function UsersColums(): GridColDef[] {
         sortable: false,
         field: 'username',
         headerName: '아이디',
-        renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>  {row.username}</Typography>
+        renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>
+            <Link href={`${PG.USER}/detail/${row.id}`}>  {row.username}</Link></Typography>
             
         
     },
@@ -65,6 +66,22 @@ export default function UsersColums(): GridColDef[] {
         field: 'job',
         headerName: '직업',
         renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>  {row.job}</Typography>
+    },
+    {
+        flex: 0.04,
+        minWidth: 30,
+        sortable: false,
+        field: 'regDate',
+        headerName: '생성일',
+        renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>  {row.regDate}</Typography>
+    },
+    {
+        flex: 0.04,
+        minWidth: 30,
+        sortable: false,
+        field: 'modDate',
+        headerName: '수정일',
+        renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>  {row.modDate}</Typography>
     }
 
 

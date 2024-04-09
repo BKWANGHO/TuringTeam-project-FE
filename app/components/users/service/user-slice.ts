@@ -36,7 +36,6 @@ export const userSlice = createSlice({
 })
 
 export const getAllUsers = (state:any)=>{
-    // console.log(JSON.stringify(state.user.array))
     return state.user.array;
 }   
 

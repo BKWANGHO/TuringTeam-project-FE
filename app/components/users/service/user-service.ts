@@ -7,8 +7,6 @@ export const findAllUsers:any = createAsyncThunk(
     async (page:number)=>{
     const data : any =await findAllUsersAPI(10);
 
-    // console.log('----------api를 사용한경우-----------')
-    // console.log('messege : ' + data)
     return data
     }
 )

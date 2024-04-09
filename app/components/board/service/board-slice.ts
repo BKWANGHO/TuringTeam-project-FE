@@ -1,11 +1,11 @@
 "use client"; 
 
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllboards } from "./board-service";
+import { findAllboards } from "./board-service";
 import { initialState } from "./board-init";
 
 
-const boardThunks = [fetchAllboards]
+const boardThunks = [findAllboards]
 
 const status = {
     pending : 'pending',
@@ -33,11 +33,10 @@ export const boardSlice = createSlice({
         const {pending,rejected} = status;
 
         builder
-        .addCase(fetchAllboards.fulfilled,handleFulfilled)
+        .addCase(findAllboards.fulfilled,handleFulfilled)
     }
 })
 export const getAllboards =(state:any )=> {
-console.log(JSON.stringify(state.board.array))
 return state.board.array;
 }
 
