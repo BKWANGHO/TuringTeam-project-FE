@@ -1,7 +1,7 @@
 'use client'
 
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllUsers } from "./user-service";
+import { findAllUsers, findUserById, modifyUser, userCount } from "./user-service";
 import { initialState } from "./user-init";
 
 
@@ -30,15 +30,18 @@ export const userSlice = createSlice({
         const {pending,rejected} = status;
 
         builder
-        .addCase(findAllUsers.fulfilled,handleFulfilled)
-        
+        .addCase(findAllUsers.fulfilled,(state :any, {payload}:any) => {state.array = payload})
+        .addCase(findUserById.fulfilled, (state :any, {payload}:any) => {state.json = payload}) 
+
+        .addCase(modifyUser.fulfilled, (state :any, {payload}:any) => {state.json = payload}) 
+        .addCase(userCount.fulfilled, (state :any, {payload}:any) => {state.count = payload}) 
     }
 })
 
-export const getAllUsers = (state:any)=>{
-    return state.user.array;
-}   
+export const getAllUsers = (state:any)=>state.user.array;   
+export const getUserById =(state:any )=>state.user.json;
 
+export const getUserCount =(state:any )=>state.user.count;
 export const{} = userSlice.actions
 
 export default userSlice.reducer;

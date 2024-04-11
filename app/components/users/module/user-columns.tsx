@@ -84,8 +84,6 @@ export default function UsersColums(): GridColDef[] {
         renderCell : ({row}:CellType) => <Typography textAlign="center" sx={{ fontSize: "1.5rem" }}>  {row.modDate}</Typography>
     }
 
-
-
 ]
 
 }

@@ -12,3 +12,45 @@ export const findAllUsersAPI = async (page:number)=>{
         console.log(error)
     }
 }
+
+export const findUserByIdAPI = async (id:number)=>{
+    try{
+        const response = await instance.get('/users/detail',{
+            params:{id}
+        })
+    return response.data
+    }catch(error){
+    console.log(error)
+    }}
+    
+export const modifyUserAPI = async (dto:{})=>{
+    console.log(dto)
+    try{
+        const response = await instance.put('/users/modify', dto)
+    return response.data
+    }catch(error){
+    console.log(error)
+    }}
+    
+export const userCountAPI = async ()=>{
+    try{
+            const response = await instance.get('/users/count',{
+              
+            })
+        return response.data
+        }catch(error){
+        console.log(error)
+        }}
+
+
+export const deleteUserAPI = async (id:number)=>{
+    try{
+        const response = await instance.get('/users/delete',{
+            params:{id}
+        })
+        return response.data
+    }catch(error){
+        console.log(error)
+        }}
+
+        

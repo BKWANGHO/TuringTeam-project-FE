@@ -7,5 +7,7 @@ export const initialState:Iboard={
     boardType : '',
     regDate : '',
     modDate : '',
-    array :[]
+    array :[],
+    json :{}
+
 }

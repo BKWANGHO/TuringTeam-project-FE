@@ -9,6 +9,7 @@ export const initialState:IArticle={
     board : '',
     regDate : '',
     modDate : '',
-    array: []
+    array: [],
+    json: {}
 
 }

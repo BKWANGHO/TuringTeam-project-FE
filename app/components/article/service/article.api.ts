@@ -7,20 +7,32 @@ try{
     const response = await instance.get('/articles/list',{
         params:{page,size:10,limit:10}
     })
-    console.log('api확인 : '+response.data)
 return response.data
 }catch(error){
 console.log(error)
 }}
 
-export const findArticleByIdAPI = async (id:number)=>{
 
+export const findArticleByIdAPI = async (id:number)=>{
     try{
-        const response = await instance.get('/articles/detail',{
-            params:{id}
-        })
-        console.log('api확인 : '+response.data)
+        const response = await instance.get('/articles/detail',{params:{id}})
     return response.data
     }catch(error){
     console.log(error)
     }}
+
+    export const deleteUserAPI = async (id:number)=>{
+        try{
+            const response = await instance.get('/articles/delete',{params:{id}})
+        return response.data
+        }catch(error){
+        console.log(error)
+        }}
+ 
+        export const articleCountAPI = async ()=>{
+            try{
+                const response = await instance.get('/articles/count',{})
+            return response.data
+            }catch(error){
+            console.log(error)
+            }}        

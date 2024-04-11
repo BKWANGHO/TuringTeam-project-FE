@@ -58,9 +58,7 @@ import { NextPage } from "next"
   return (<>
 
     <div className="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr />
+      <h1>Sign Up</h1><br />
 
       <label htmlFor="username"><b>Username</b></label><br />
       <input type="text" placeholder="Enter Username" name="username" onChange={handleUsername} required /><br /><br />
@@ -80,20 +78,8 @@ import { NextPage } from "next"
       <label htmlFor="job"><b>Job</b></label><br />
       <input type="text" placeholder="Enter job" name="job" onChange={handleJob} required /><br /><br />
 
-      {/* <label htmlFor="height"><b>Height</b></label><br />
-      <input type="text" placeholder="Enter height" name="height" onChange={handleHeight} required /><br /><br />
-
-      <label htmlFor="weight"><b>Weight</b></label><br />
-      <input type="text" placeholder="Enter weight" name="weight" onChange={handleWeight} required /><br /><br /> */}
-
-      <label>
-        <input type="checkbox" checked={true} name="remember" style={{ marginBottom: '15px' }} /> Remember me
-      </label><br />
-
-      <p>By creating an account you agree to our <a href="#" style={{ color: 'dodgerblue' }}>Terms & Privacy</a>.</p>
-
       <div className="clearfix">
-        <button type="button" className="cancelbtn">Cancel</button>
+        <button type="button" className="cancelbtn">Cancel </button><br />
         <button type="submit" className="signupbtn" onClick={handleSubmit}>Sign Up</button>
       </div>
     </div>

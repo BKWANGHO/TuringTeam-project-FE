@@ -1,7 +1,7 @@
 'use client'
 
-import { findAllUsers } from "@/app/components/users/service/user-service";
-import { getAllUsers } from "@/app/components/users/service/user-slice";
+import { findAllUsers, userCount } from "@/app/components/users/service/user-service";
+import { getAllUsers, getUserCount } from "@/app/components/users/service/user-slice";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ const UsersPage: NextPage = () => {
 
   const dispatch = useDispatch()
   const allUsers: [] = useSelector(getAllUsers)
+  const getuserCount: number = useSelector(getUserCount)
 
   if (allUsers !== undefined) {
     console.log('allUsers is not undefined')
@@ -22,12 +23,14 @@ const UsersPage: NextPage = () => {
   }
 
   useEffect(() => {
+    dispatch(userCount())
     dispatch(findAllUsers(1))
   }, [])
 
 
   return (<>
     <h1>사용자 목록</h1>
+    <h1>사용자 수 : {getuserCount}</h1>
     <div style={{ height: "100%", width: "100%" }}>
       {allUsers && <DataGrid // 🔥 4
         rows={allUsers}

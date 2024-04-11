@@ -2,7 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./article.init";
-import { findAllArticles} from "./article.service";
+import { articleCount, findAllArticles, findArticleById} from "./article.service";
 
 
 const articleThunks = [findAllArticles]
@@ -32,14 +32,15 @@ export const articleSlice = createSlice({
         const {pending,rejected} = status;
 
         builder
-        .addCase(findAllArticles.fulfilled,handleFulfilled)
-    }
+        .addCase(findAllArticles.fulfilled, (state :any, {payload}:any) => {state.array = payload}) 
+        .addCase(findArticleById.fulfilled, (state :any, {payload}:any) => {state.json = payload}) 
+        .addCase(articleCount.fulfilled, (state :any, {payload}:any) => {state.count = payload}) 
+    
+    }  
 })
-export const getAllArticles =(state:any )=> {
-return state.article.array;
-}
-
-
+export const getAllArticles =(state:any )=> state.article.array;
+export const getArticleById =(state:any )=> state.article.json;
+export const getArtilceCount =(state:any )=> state.article.count;
 
 export const{} = articleSlice.actions
 

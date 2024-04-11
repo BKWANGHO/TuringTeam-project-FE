@@ -4,9 +4,9 @@ export interface IUser {
     name? : string
     password? : string
     phone? : string
-    addressId? :number
     job? : string 
     regDate? : string
     modDate? : string
     array? :[]
+    json? :{}
 }

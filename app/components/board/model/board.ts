@@ -5,4 +5,5 @@ export interface Iboard{
     regDate? : string
     modDate? : string
     array? :[]
+    json? :{}
 }

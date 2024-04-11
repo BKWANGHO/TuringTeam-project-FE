@@ -1,26 +1,67 @@
 'use client'
 
-import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { NextPage } from "next";
-import Columns from "@/app/components/board/module/board-columns";
-import { getAllboards } from "@/app/components/board/service/board-slice";
-import { findAllboards } from "@/app/components/board/service/board-service";
+import { MyTypography, MyTypographyLeft } from '@/app/components/common/style/cell';
+import { getUserById } from '@/app/components/users/service/user-slice';
+import { deleteUser, findUserById, modifyUser } from '@/app/components/users/service/user-service';
+import { IUser } from "@/app/components/users/model/user.model";
+import { useRouter } from "next/navigation";
+import { PG } from "@/app/components/common/enums/PG";
 
 
- const boardsDetailPage : NextPage = ({data}:any)=> {
-   
-    return (<>
-        <h1>사용자 상세페이지</h1>
-        {/* <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={allboards}
-        columns={Columns()}
-        pageSizeOptions={[5,10,20]} // 4-1
-        checkboxSelection
-      />
-    </div> */}
-    </>)
+
+export default function usersDetailPage({ params }: any) {
+
+  const dispatch = useDispatch()
+  const getUser: IUser = useSelector(getUserById)
+
+  const [dto,setDto] = useState({id:params.id, username:'',name:'',phone :'',job:''});
+
+  
+  useEffect(() => { dispatch(findUserById(params.id)) }, [])
+
+
+  const handleChange = (e:any) => {
+    const {
+      target: { value, name }
+    } = e;
+    setDto(dto => ({ ...dto, [name]: value }));
+  };
+
+
+  const router = useRouter()
+  const handleSubmit = ()=> {
+    dispatch(modifyUser(dto)) 
+    router.push( `${PG.USER}/list`)
+  }
+
+const handledelete = ()=>{
+  dispatch(deleteUser(params.id))
+  router.push( `${PG.USER}/list`)
 }
-export default boardsDetailPage;
+
+
+  return (<>
+    <h1>게시판 상세페이지</h1>
+    <span> {MyTypographyLeft('ID :'+params.id, "1.5rem")}</span><br />
+
+    <span>{MyTypographyLeft('아이디 :', "1.5rem")} <input type="text" placeholder={getUser.username} name="username" onChange={handleChange} /></span><br />
+    
+    <span>{MyTypographyLeft('이  름 :', "1.5rem")} <input type="text" placeholder={getUser.name} name="name" onChange={handleChange}/> </span><br />
+
+    <span>{MyTypographyLeft('핸드폰 :', "1.5rem")} <input type="text" placeholder={getUser.phone} name="phone" onChange={handleChange}/></span><br />
+
+    <span>{MyTypographyLeft('직업 수정 :', "1.5rem")} <input type="text" placeholder={getUser.job} name="job" onChange={handleChange}/></span><br />
+
+    <span>{MyTypographyLeft('생성일 : '+getUser.regDate, "1.5rem")}</span><br />
+
+    <span>{MyTypographyLeft('수정일 : '+getUser.modDate, "1.5rem")}</span>
+
+    <button type="submit"  onClick={handleSubmit}>수정완료</button><br />
+    <button type="submit"  onClick={handledelete}>회원탈퇴</button><br />
+
+  </>)
+
+}

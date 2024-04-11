@@ -12,3 +12,15 @@ return response.data
 console.log(error)
 
 }}
+
+
+export const findBoardByIdAPI = async (id:number)=>{
+    try{
+        const response = await instance.get('/boards/detail',{
+            params:{id}
+        })
+        console.log(response.data)
+    return response.data
+    }catch(error){
+    console.log(error)
+    }}

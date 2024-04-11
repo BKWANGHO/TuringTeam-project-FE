@@ -1,10 +1,8 @@
 import { IArticle } from "@/app/components/article/model/article";
 
-export const initialState:IArticle = {
+export const initialState:ICompany = {
     id: 0,
-    title: '',
-    content: '',
-    registerDate: '',
-    array: [],
-    writer: 0
+    company: '',
+    contact: '',
+    country: '',
 }
