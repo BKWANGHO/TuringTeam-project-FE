@@ -8,9 +8,20 @@ import Columns from "@/app/components/article/module/article-columns";
 import { articleCount, findAllArticles } from '@/app/components/article/service/article.service';
 import { getAllArticles, getArtilceCount } from '@/app/components/article/service/article.slice';
 import articlesColums from '@/app/components/article/module/article-columns';
+import Link from 'next/link';
+
+const cards = [
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/mountain-nightview.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/autumn.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/babypinetree.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/beach.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/purpleflowers.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/starrysky.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/lake.jpg",
+];
 
 
-const ArticlesPage: NextPage = ({ data }: any) => {
+export default function ArticlesPage({ data }: any){
   const dispatch = useDispatch()
   const allArticles: [] = useSelector(getAllArticles)
   const getArticleCount: number = useSelector(getArtilceCount)
@@ -23,12 +34,33 @@ const ArticlesPage: NextPage = ({ data }: any) => {
 
   useEffect(() => {
     dispatch(articleCount())
-    dispatch(findAllArticles(10))
+    dispatch(findAllArticles(1))
   }, [])
 
   return (<>
+     <>
+     <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex overflow-x-scroll snap-x snap-mandatory max-w-6xl no-scrollbar">
+        {cards.map((data, index) => {
+          return (
+            <section
+              className="flex-shrink-0 w-full snap-center justify-center items-center"
+              key={index}
+            >
+              <img
+                src={data}
+                alt="Images to scroll horizontal"
+                className="w-full h-[500px]"
+              />
+            </section>
+          );
+        })}
+      </div>
+    </div>
+    </>
     <h2> Articles</h2>
     <h1>게시글 수 : {getArticleCount}</h1>
+    <Link href ="" >글쓰기</Link>
     <div style={{ height: 400, width: "100%" }}>
       {allArticles && <DataGrid
         rows={allArticles}
@@ -40,4 +72,3 @@ const ArticlesPage: NextPage = ({ data }: any) => {
 
   </>)
 }
-export default ArticlesPage;

@@ -2,10 +2,9 @@ import { instance } from "@/app/components/common/configs/axios-config"
 
 
 export const findAllArticlesAPI = async (page:number)=>{
-
 try{
     const response = await instance.get('/articles/list',{
-        params:{page,size:10,limit:10}
+        params:{page,limit:10}
     })
 return response.data
 }catch(error){
@@ -21,9 +20,9 @@ export const findArticleByIdAPI = async (id:number)=>{
     console.log(error)
     }}
 
-    export const deleteUserAPI = async (id:number)=>{
-        try{
-            const response = await instance.get('/articles/delete',{params:{id}})
+export const deleteUserAPI = async (id:number)=>{
+    try{
+        const response = await instance.get('/articles/delete',{params:{id}})
         return response.data
         }catch(error){
         console.log(error)

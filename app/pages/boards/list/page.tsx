@@ -15,7 +15,17 @@ import { getAllboards } from "@/app/components/board/service/board-slice";
 import { findAllboards } from "@/app/components/board/service/board-service";
 import { StyledDataGrid } from "@/app/components/common/style/board";
 import { ClassNames } from "@emotion/react";
+import Link from "next/link";
 
+const cards = [
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/mountain-nightview.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/autumn.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/babypinetree.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/beach.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/purpleflowers.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/starrysky.jpg",
+  "https://www.tailwindtap.com/assets/components/horizontal-carousel/lake.jpg",
+];
 
  const boardsPage : NextPage = ({data}:any)=> {
     const dispatch = useDispatch()
@@ -33,7 +43,26 @@ import { ClassNames } from "@emotion/react";
     }, [])
     
     return (<>
+    <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex overflow-x-scroll snap-x snap-mandatory max-w-6xl no-scrollbar">
+        {cards.map((data, index) => {
+          return (
+            <section
+              className="flex-shrink-0 w-full snap-center justify-center items-center"
+              key={index}
+            >
+              <img
+                src={data}
+                alt="Images to scroll horizontal"
+                className="w-full h-[500px]"
+              />
+            </section>
+          );
+        })}
+      </div>
+    </div>
         <h2>게시판목록 Board</h2>
+       
         <div style={{ height: "100%", width: "100%" }}>
       {allboards&&<DataGrid // 🔥 4
         rows={allboards}

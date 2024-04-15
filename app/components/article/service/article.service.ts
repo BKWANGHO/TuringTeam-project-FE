@@ -4,7 +4,7 @@ import { articleCountAPI, deleteUserAPI, findAllArticlesAPI, findArticleByIdAPI 
 export const findAllArticles : any = createAsyncThunk(
     'articles/findAllArticles',
      async (page:number)=>{
-    const data:any = await findAllArticlesAPI(1);
+    const data:any = await findAllArticlesAPI(10);
     
     return data
 })

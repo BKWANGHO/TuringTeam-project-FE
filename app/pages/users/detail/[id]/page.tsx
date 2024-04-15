@@ -17,7 +17,7 @@ export default function usersDetailPage({ params }: any) {
   const dispatch = useDispatch()
   const getUser: IUser = useSelector(getUserById)
 
-  const [dto,setDto] = useState({id:params.id, username:'',name:'',phone :'',job:''});
+  const [dto,setDto] = useState({id:params.id, password : '', name:'',phone :'',job:''});
 
   
   useEffect(() => { dispatch(findUserById(params.id)) }, [])
@@ -47,7 +47,9 @@ const handledelete = ()=>{
     <h1>게시판 상세페이지</h1>
     <span> {MyTypographyLeft('ID :'+params.id, "1.5rem")}</span><br />
 
-    <span>{MyTypographyLeft('아이디 :', "1.5rem")} <input type="text" placeholder={getUser.username} name="username" onChange={handleChange} /></span><br />
+    <span>{MyTypographyLeft('아이디 :', "1.5rem")} <input type="text" placeholder={getUser.username} /></span><br />
+
+    <span>{MyTypographyLeft('비밀번호 :', "1.5rem")} <input type="text" placeholder={getUser.password} name="password" onChange={handleChange} /></span><br />
     
     <span>{MyTypographyLeft('이  름 :', "1.5rem")} <input type="text" placeholder={getUser.name} name="name" onChange={handleChange}/> </span><br />
 

@@ -1,4 +1,5 @@
 import { instance } from "@/app/components/common/configs/axios-config"
+import { IUser } from "../model/user.model"
 
 
 export const findAllUsersAPI = async (page:number)=>{
@@ -42,15 +43,23 @@ export const userCountAPI = async ()=>{
         console.log(error)
         }}
 
-
 export const deleteUserAPI = async (id:number)=>{
     try{
         const response = await instance.get('/users/delete',{
             params:{id}
         })
+
         return response.data
     }catch(error){
         console.log(error)
         }}
 
-        
+export const loginAPI = async (user:IUser)=>{
+    
+    try{
+        const response = await instance.post('/users/login',user)
+        console.log('user : '+ user)
+        return response.data.message
+    }catch(error){
+        console.log(error)
+        }}        
